@@ -8,9 +8,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/stainless-sdks/mcp_poc_stainless-typescript.git"
+    "url": "git+https://github.com/carlosmori/poc-mcp-sdk.git"
   },
-  "homepage": "https://github.com/stainless-sdks/mcp_poc_stainless-typescript/tree/main/packages/mcp-server#readme",
+  "homepage": "https://github.com/carlosmori/poc-mcp-sdk/tree/main/packages/mcp-server#readme",
   "documentation": "https://github.com/carlosmori/poc-mcp-server-oauth",
   "server": {
     "type": "node",
