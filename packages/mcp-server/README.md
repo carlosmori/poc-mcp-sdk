@@ -9,8 +9,8 @@ It is generated with [Stainless](https://www.stainless.com/).
 Because it's not published yet, clone the repo and build it:
 
 ```sh
-git clone git@github.com:stainless-sdks/mcp_poc_stainless-typescript.git
-cd mcp_poc_stainless-typescript
+git clone git@github.com:carlosmori/poc-mcp-sdk.git
+cd poc-mcp-sdk
 ./scripts/bootstrap
 ./scripts/build
 ```
@@ -40,7 +40,7 @@ For clients with a configuration JSON, it might look something like this:
   "mcpServers": {
     "mcp_poc_stainless_api": {
       "command": "node",
-      "args": ["/path/to/local/mcp_poc_stainless-typescript/packages/mcp-server"],
+      "args": ["/path/to/local/poc-mcp-sdk/packages/mcp-server"],
       "env": {
         "MCP_POC_STAINLESS_API_KEY": "My API Key"
       }
