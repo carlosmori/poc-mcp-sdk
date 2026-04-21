@@ -20,6 +20,7 @@ cd poc-mcp-sdk
 ```sh
 # set env vars as needed
 export MCP_POC_STAINLESS_API_KEY="My API Key"
+export MCP_POC_STAINLESS_ENVIRONMENT="production"
 node ./packages/mcp-server/dist/index.js
 ```
 
@@ -42,7 +43,8 @@ For clients with a configuration JSON, it might look something like this:
       "command": "node",
       "args": ["/path/to/local/poc-mcp-sdk/packages/mcp-server"],
       "env": {
-        "MCP_POC_STAINLESS_API_KEY": "My API Key"
+        "MCP_POC_STAINLESS_API_KEY": "My API Key",
+        "MCP_POC_STAINLESS_ENVIRONMENT": "production"
       }
     }
   }
