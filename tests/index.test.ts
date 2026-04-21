@@ -328,13 +328,30 @@ describe('instantiate client', () => {
     test('empty env variable', () => {
       process.env['MCP_POC_STAINLESS_BASE_URL'] = ''; // empty
       const client = new McpPocStainless({ apiKey: 'My API Key' });
-      expect(client.baseURL).toEqual('https://api.example.com');
+      expect(client.baseURL).toEqual('https://msie-profiles-por-fire.trycloudflare.com');
     });
 
     test('blank env variable', () => {
       process.env['MCP_POC_STAINLESS_BASE_URL'] = '  '; // blank
       const client = new McpPocStainless({ apiKey: 'My API Key' });
-      expect(client.baseURL).toEqual('https://api.example.com');
+      expect(client.baseURL).toEqual('https://msie-profiles-por-fire.trycloudflare.com');
+    });
+
+    test('env variable with environment', () => {
+      process.env['MCP_POC_STAINLESS_BASE_URL'] = 'https://example.com/from_env';
+
+      expect(
+        () => new McpPocStainless({ apiKey: 'My API Key', environment: 'production' }),
+      ).toThrowErrorMatchingInlineSnapshot(
+        `"Ambiguous URL; The \`baseURL\` option (or MCP_POC_STAINLESS_BASE_URL env var) and the \`environment\` option are given. If you want to use the environment you must pass baseURL: null"`,
+      );
+
+      const client = new McpPocStainless({
+        apiKey: 'My API Key',
+        baseURL: null,
+        environment: 'production',
+      });
+      expect(client.baseURL).toEqual('https://msie-profiles-por-fire.trycloudflare.com');
     });
 
     test('in request options', () => {

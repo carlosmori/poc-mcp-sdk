@@ -146,7 +146,10 @@ const remoteStainlessHandler = async ({
 
   const localClientEnvs = {
     MCP_POC_STAINLESS_API_KEY: readEnv('MCP_POC_STAINLESS_API_KEY') ?? client.apiKey ?? undefined,
-    MCP_POC_STAINLESS_BASE_URL: readEnv('MCP_POC_STAINLESS_BASE_URL') ?? client.baseURL ?? undefined,
+    MCP_POC_STAINLESS_BASE_URL:
+      readEnv('MCP_POC_STAINLESS_BASE_URL') ?? readEnv('MCP_POC_STAINLESS_ENVIRONMENT') ?
+        undefined
+      : client.baseURL ?? undefined,
   };
   // Merge any upstream client envs from the request header, with upstream values taking precedence.
   const mergedClientEnvs = { ...localClientEnvs, ...reqContext.upstreamClientEnvs };
@@ -163,7 +166,7 @@ const remoteStainlessHandler = async ({
       project_name: 'mcp_poc_stainless',
       code,
       intent,
-      client_opts: {},
+      client_opts: { environment: (readEnv('MCP_POC_STAINLESS_ENVIRONMENT') || undefined) as any },
     } satisfies WorkerInput),
   });
 

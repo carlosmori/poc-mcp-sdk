@@ -36,6 +36,7 @@ import McpPocStainless from 'mcp_poc_stainless';
 
 const client = new McpPocStainless({
   apiKey: process.env['MCP_POC_STAINLESS_API_KEY'], // This is the default and can be omitted
+  environment: 'local', // defaults to 'production'
 });
 
 const response = await client.status.check();
@@ -53,6 +54,7 @@ import McpPocStainless from 'mcp_poc_stainless';
 
 const client = new McpPocStainless({
   apiKey: process.env['MCP_POC_STAINLESS_API_KEY'], // This is the default and can be omitted
+  environment: 'local', // defaults to 'production'
 });
 
 const response: McpPocStainless.StatusCheckResponse = await client.status.check();
