@@ -62,14 +62,14 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## check\n\n`client.status.check(): { status?: string; }`\n\n**get** `/status`\n\nHealth check\n\n### Returns\n\n- `{ status?: string; }`\n\n  - `status?: string`\n\n### Example\n\n```typescript\nimport McpPocStainless from 'mcp_poc_stainless';\n\nconst client = new McpPocStainless();\n\nconst response = await client.status.check();\n\nconsole.log(response);\n```",
     perLanguage: {
-      http: {
-        example:
-          'curl https://msie-profiles-por-fire.trycloudflare.com/status \\\n    -H "Authorization: Bearer $MCP_POC_STAINLESS_API_KEY"',
-      },
       typescript: {
         method: 'client.status.check',
         example:
           "import McpPocStainless from 'mcp_poc_stainless';\n\nconst client = new McpPocStainless({\n  apiKey: process.env['MCP_POC_STAINLESS_API_KEY'], // This is the default and can be omitted\n});\n\nconst response = await client.status.check();\n\nconsole.log(response.status);",
+      },
+      http: {
+        example:
+          'curl https://msie-profiles-por-fire.trycloudflare.com/status \\\n    -H "Authorization: Bearer $MCP_POC_STAINLESS_API_KEY"',
       },
     },
   },
@@ -86,14 +86,14 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## list_regions\n\n`client.org.listRegions(x-api-key?: string): { id: string; code: string; name: string; }[]`\n\n**get** `/v1/org/regions`\n\nList supported regions\n\n### Parameters\n\n- `x-api-key?: string`\n\n### Returns\n\n- `{ id: string; code: string; name: string; }[]`\n\n### Example\n\n```typescript\nimport McpPocStainless from 'mcp_poc_stainless';\n\nconst client = new McpPocStainless();\n\nconst response = await client.org.listRegions();\n\nconsole.log(response);\n```",
     perLanguage: {
-      http: {
-        example:
-          'curl https://msie-profiles-por-fire.trycloudflare.com/v1/org/regions \\\n    -H "Authorization: Bearer $MCP_POC_STAINLESS_API_KEY"',
-      },
       typescript: {
         method: 'client.org.listRegions',
         example:
           "import McpPocStainless from 'mcp_poc_stainless';\n\nconst client = new McpPocStainless({\n  apiKey: process.env['MCP_POC_STAINLESS_API_KEY'], // This is the default and can be omitted\n});\n\nconst response = await client.org.listRegions();\n\nconsole.log(response);",
+      },
+      http: {
+        example:
+          'curl https://msie-profiles-por-fire.trycloudflare.com/v1/org/regions \\\n    -H "Authorization: Bearer $MCP_POC_STAINLESS_API_KEY"',
       },
     },
   },
@@ -110,14 +110,14 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## create_api_key\n\n`client.internal.createAPIKey(email: string): { api_key: string; user_email: string; }`\n\n**post** `/v1/internal/create-api-key`\n\nCreate a new API key for a user (Worker -> API only)\n\n### Parameters\n\n- `email: string`\n\n### Returns\n\n- `{ api_key: string; user_email: string; }`\n\n  - `api_key: string`\n  - `user_email: string`\n\n### Example\n\n```typescript\nimport McpPocStainless from 'mcp_poc_stainless';\n\nconst client = new McpPocStainless();\n\nconst response = await client.internal.createAPIKey({ email: 'dev@stainless.com' });\n\nconsole.log(response);\n```",
     perLanguage: {
-      http: {
-        example:
-          'curl https://msie-profiles-por-fire.trycloudflare.com/v1/internal/create-api-key \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $MCP_POC_STAINLESS_API_KEY" \\\n    -d \'{\n          "email": "dev@stainless.com"\n        }\'',
-      },
       typescript: {
         method: 'client.internal.createAPIKey',
         example:
           "import McpPocStainless from 'mcp_poc_stainless';\n\nconst client = new McpPocStainless({\n  apiKey: process.env['MCP_POC_STAINLESS_API_KEY'], // This is the default and can be omitted\n});\n\nconst response = await client.internal.createAPIKey({ email: 'dev@stainless.com' });\n\nconsole.log(response.api_key);",
+      },
+      http: {
+        example:
+          'curl https://msie-profiles-por-fire.trycloudflare.com/v1/internal/create-api-key \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $MCP_POC_STAINLESS_API_KEY" \\\n    -d \'{\n          "email": "dev@stainless.com"\n        }\'',
       },
     },
   },
