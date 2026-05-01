@@ -1,7 +1,15 @@
 import { makeOAuthConsent } from './app';
+// `agents` and `@modelcontextprotocol/sdk` versions must stay in sync with the
+// pins/overrides in package.json. `agents` declares an exact pin on
+// `@modelcontextprotocol/sdk`; if our resolved version drifts, npm installs a
+// second copy under `agents/node_modules/`, and `initMcpServer`'s runtime
+// `instanceof McpServer` check fails because the two `McpServer` classes are
+// distinct constructors.
 import { McpAgent } from 'agents/mcp';
 import OAuthProvider from '@cloudflare/workers-oauth-provider';
-import { McpOptions, initMcpServer, server, ClientOptions } from 'mcp_poc_stainless_mcp/server';
+import { ClientOptions } from 'mcp_poc_stainless';
+import { McpOptions } from 'mcp_poc_stainless_mcp/options';
+import { initMcpServer, newMcpServer } from 'mcp_poc_stainless_mcp/server';
 import type { ExportedHandler } from '@cloudflare/workers-types';
 
 type MCPProps = {
@@ -43,11 +51,15 @@ const serverConfig: ServerConfig = {
 };
 
 export class MyMCP extends McpAgent<Env, unknown, MCPProps> {
-  server = server;
+  server = newMcpServer({});
 
   async init() {
+    if (this.props == null) {
+      throw new Error('MCP props are not initialized');
+    }
+
     initMcpServer({
-      server: this.server,
+      server: await this.server,
       clientOptions: this.props.clientProps,
       mcpOptions: this.props.clientConfig,
     });
