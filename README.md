@@ -20,7 +20,7 @@ Use the Mcp Poc Stainless MCP Server to enable AI assistants to interact with th
 ## Installation
 
 ```sh
-npm install git+ssh://git@github.com:stainless-sdks/mcp_poc_stainless-typescript.git
+npm install git+ssh://git@github.com:carlosmori/poc-mcp-sdk.git
 ```
 
 > [!NOTE]
@@ -36,6 +36,7 @@ import McpPocStainless from 'mcp_poc_stainless';
 
 const client = new McpPocStainless({
   apiKey: process.env['MCP_POC_STAINLESS_API_KEY'], // This is the default and can be omitted
+  environment: 'local', // defaults to 'production'
 });
 
 const response = await client.status.check();
@@ -53,6 +54,7 @@ import McpPocStainless from 'mcp_poc_stainless';
 
 const client = new McpPocStainless({
   apiKey: process.env['MCP_POC_STAINLESS_API_KEY'], // This is the default and can be omitted
+  environment: 'local', // defaults to 'production'
 });
 
 const response: McpPocStainless.StatusCheckResponse = await client.status.check();
@@ -344,7 +346,7 @@ This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) con
 
 We take backwards-compatibility seriously and work hard to ensure you can rely on a smooth upgrade experience.
 
-We are keen for your feedback; please open an [issue](https://www.github.com/stainless-sdks/mcp_poc_stainless-typescript/issues) with questions, bugs, or suggestions.
+We are keen for your feedback; please open an [issue](https://www.github.com/carlosmori/poc-mcp-sdk/issues) with questions, bugs, or suggestions.
 
 ## Requirements
 
